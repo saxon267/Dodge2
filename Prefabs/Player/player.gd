@@ -6,6 +6,7 @@ signal hit
 
 func _ready() -> void:
 	screen_size=get_viewport_rect().size#获取当前视口的大小
+	hide()
 
 
 

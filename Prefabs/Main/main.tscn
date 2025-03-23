@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwfjtpbise38g"]
+[gd_scene load_steps=6 format=3 uid="uid://bwfjtpbise38g"]
 
 [ext_resource type="Script" path="res://Prefabs/Main/main.gd" id="1_owli5"]
 [ext_resource type="PackedScene" uid="uid://dah7vrnh71h72" path="res://Prefabs/Mob/mob.tscn" id="2_gwurl"]
 [ext_resource type="PackedScene" uid="uid://df5l30jd70q1o" path="res://Prefabs/Player/player.tscn" id="3_es1eo"]
+[ext_resource type="PackedScene" uid="uid://ppemwixp4wx0" path="res://Prefabs/hud.tscn" id="4_frlh4"]
 
 [sub_resource type="Curve2D" id="Curve2D_s00of"]
 _data = {
@@ -13,6 +14,14 @@ point_count = 5
 [node name="Main" type="Node"]
 script = ExtResource("1_owli5")
 mob_scene = ExtResource("2_gwurl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.187315, 0.185524, 1.20327e-07, 1)
 
 [node name="Timer_Mob" type="Timer" parent="."]
 wait_time = 0.5
@@ -33,7 +42,10 @@ curve = SubResource("Curve2D_s00of")
 
 [node name="Player" parent="." instance=ExtResource("3_es1eo")]
 
+[node name="HUD" parent="." instance=ExtResource("4_frlh4")]
+
 [connection signal="timeout" from="Timer_Mob" to="." method="_on_timer_mob_timeout"]
 [connection signal="timeout" from="Timer_ScoreTimer" to="." method="_on_timer_score_timer_timeout"]
 [connection signal="timeout" from="Timer_StartTimer" to="." method="_on_timer_start_timer_timeout"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]

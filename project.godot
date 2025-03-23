@@ -25,9 +25,12 @@ window/stretch/mode="canvas_items"
 
 folder_colors={
 "res://Assets/": "yellow",
-"res://Prefabs/": "blue",
-"res://expro/": "purple"
+"res://Prefabs/": "blue"
 }
+
+[global_group]
+
+mobs=""
 
 [input]
 

@@ -8,16 +8,21 @@ func _ready() -> void:
 	pass
 
 func _on_player_hit() -> void:
-	pass
+	game_over()
+
 	
 func game_over():
 	$Timer_ScoreTimer.stop()
 	$Timer_Mob.stop()
+	$HUD.show_game_over()
 	
 func new_game():
 	score=0
+	$HUD.update_score(score)
+	$HUD.show_message("Get Ready")
 	$Player.start($StartPosition.position)
 	$Timer_StartTimer.start()
+	get_tree().call_group("mobs","queue_free")
 
 
 func _on_timer_mob_timeout() -> void:
@@ -38,6 +43,7 @@ func _on_timer_mob_timeout() -> void:
 
 func _on_timer_score_timer_timeout() -> void:
 	score+=1
+	$HUD.update_score(score)
 
 
 func _on_timer_start_timer_timeout() -> void:
