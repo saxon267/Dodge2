@@ -11,14 +11,15 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	var joystick_position=$Joystick.get_now_position()
 	var velocity=Vector2.ZERO
-	if Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed("move_left")or joystick_position.x<0:
 		velocity.x-=1
-	if Input.is_action_pressed("move_right"):
+	if Input.is_action_pressed("move_right")or joystick_position.x>0:
 		velocity.x+=1
-	if Input.is_action_pressed("move_up"):
+	if Input.is_action_pressed("move_up")or joystick_position.y<0:
 		velocity.y-=1
-	if Input.is_action_pressed("move_down"):
+	if Input.is_action_pressed("move_down")or joystick_position.y>0:
 		velocity.y+=1
 	if velocity.length()>0:
 		velocity=velocity.normalized()*speed
