@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://df5l30jd70q1o"]
+[gd_scene load_steps=8 format=3 uid="uid://df5l30jd70q1o"]
 
 [ext_resource type="Script" path="res://Prefabs/Player/player.gd" id="1_h4jyy"]
 [ext_resource type="Texture2D" uid="uid://ccy757of7f5mj" path="res://Assets/dodge_the_creeps_2d_assets/art/playerGrey_up1.png" id="1_mporj"]
 [ext_resource type="Texture2D" uid="uid://166ihgpy1fk" path="res://Assets/dodge_the_creeps_2d_assets/art/playerGrey_up2.png" id="2_b2ucy"]
 [ext_resource type="Texture2D" uid="uid://qqnucrfvegdb" path="res://Assets/dodge_the_creeps_2d_assets/art/playerGrey_walk1.png" id="3_1j1ui"]
 [ext_resource type="Texture2D" uid="uid://piv7v2ml4pjy" path="res://Assets/dodge_the_creeps_2d_assets/art/playerGrey_walk2.png" id="4_da0pw"]
-[ext_resource type="PackedScene" uid="uid://bapeom8vo03yx" path="res://Prefabs/Joystick/v_joystick.tscn" id="6_a02od"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dvgcl"]
 animations = [{
@@ -47,7 +46,5 @@ animation = &"up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ikppq")
-
-[node name="Joystick" parent="." instance=ExtResource("6_a02od")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

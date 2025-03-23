@@ -1,11 +1,13 @@
 extends Node
 
 @export var mob_scene:PackedScene#加载Mob
+@onready var joystick: Sprite2D = $Joystick
 var score
 
 
 func _ready() -> void:
-	pass
+	joystick.hide()
+
 
 func _on_player_hit() -> void:
 	game_over()
@@ -17,8 +19,10 @@ func game_over():
 	$HUD.show_game_over()
 	$SFX.play()
 	$BGM.stop()
+	joystick.hide()
 	
 func new_game():
+	joystick.show()
 	$BGM.play()
 	score=0
 	$HUD.update_score(score)

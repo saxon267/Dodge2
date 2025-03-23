@@ -3,6 +3,7 @@ extends Area2D
 @export var speed=200
 var screen_size
 signal hit
+@onready var joystick: Sprite2D = $"../Joystick"
 
 func _ready() -> void:
 	screen_size=get_viewport_rect().size#获取当前视口的大小
@@ -10,16 +11,17 @@ func _ready() -> void:
 
 
 
+
 func _process(delta: float) -> void:
-	var joystick_position=$Joystick.get_now_position()
+	var joystick_position=joystick.get_now_position()
 	var velocity=Vector2.ZERO
-	if Input.is_action_pressed("move_left")or joystick_position.x<0:
+	if Input.is_action_pressed("move_left")or joystick_position.x<-0.1:
 		velocity.x-=1
-	if Input.is_action_pressed("move_right")or joystick_position.x>0:
+	if Input.is_action_pressed("move_right")or joystick_position.x>0.1:
 		velocity.x+=1
-	if Input.is_action_pressed("move_up")or joystick_position.y<0:
+	if Input.is_action_pressed("move_up")or joystick_position.y<-0.1:
 		velocity.y-=1
-	if Input.is_action_pressed("move_down")or joystick_position.y>0:
+	if Input.is_action_pressed("move_down")or joystick_position.y>0.1:
 		velocity.y+=1
 	if velocity.length()>0:
 		velocity=velocity.normalized()*speed

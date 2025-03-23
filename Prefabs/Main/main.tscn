@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://bwfjtpbise38g"]
+[gd_scene load_steps=10 format=4 uid="uid://bwfjtpbise38g"]
 
 [ext_resource type="Script" path="res://Prefabs/Main/main.gd" id="1_owli5"]
 [ext_resource type="PackedScene" uid="uid://dah7vrnh71h72" path="res://Prefabs/Mob/mob.tscn" id="2_gwurl"]
 [ext_resource type="PackedScene" uid="uid://df5l30jd70q1o" path="res://Prefabs/Player/player.tscn" id="3_es1eo"]
 [ext_resource type="PackedScene" uid="uid://ppemwixp4wx0" path="res://Prefabs/hud.tscn" id="4_frlh4"]
 [ext_resource type="AudioStream" uid="uid://cgm0dp3w4x4dc" path="res://Assets/dodge_the_creeps_2d_assets/art/gameover.wav" id="5_210uo"]
+[ext_resource type="PackedScene" uid="uid://bapeom8vo03yx" path="res://Prefabs/Joystick/v_joystick.tscn" id="6_rfkvm"]
 
 [sub_resource type="Curve2D" id="Curve2D_s00of"]
 _data = {
@@ -61,6 +62,9 @@ bus = &"BGM"
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_210uo")
 bus = &"SFX"
+
+[node name="Joystick" parent="." instance=ExtResource("6_rfkvm")]
+position = Vector2(240, 603)
 
 [connection signal="timeout" from="Timer_Mob" to="." method="_on_timer_mob_timeout"]
 [connection signal="timeout" from="Timer_ScoreTimer" to="." method="_on_timer_score_timer_timeout"]

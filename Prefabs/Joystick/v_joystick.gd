@@ -3,6 +3,9 @@ extends Sprite2D
 const  MAX_LENTH:int=70#摇杆最大活动范围
 var on_draging=-1
 
+func _ready() -> void:
+	set_center()
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventScreenDrag or (event is InputEventScreenTouch and event.is_pressed()):
 		var mouse_position=(event.position-self.global_position).length()
@@ -14,9 +17,9 @@ func _input(event: InputEvent) -> void:
 		if $Joystick_rocker.position.length()>MAX_LENTH:
 			$Joystick_rocker.set_position($Joystick_rocker.position.normalized()*MAX_LENTH)
 	if event is InputEventScreenTouch and !event.is_pressed():
-		if event.get_index()==on_draging:
-			set_center()
-			on_draging=-1
+		#if event.get_index()==on_draging:
+		set_center()
+		on_draging=-1
 
 
 func set_center():
