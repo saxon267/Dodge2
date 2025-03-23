@@ -15,8 +15,11 @@ func game_over():
 	$Timer_ScoreTimer.stop()
 	$Timer_Mob.stop()
 	$HUD.show_game_over()
+	$SFX.play()
+	$BGM.stop()
 	
 func new_game():
+	$BGM.play()
 	score=0
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
